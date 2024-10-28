@@ -1,0 +1,42 @@
+---
+import BasicNavbar from "../components/BasicNavbar.astro";
+
+const {frontmatter} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Metatags -->
+        <meta name="description" content={frontmatter.description}>
+        <meta name="keywords" content={frontmatter.keywords}>
+        <meta name="robots" content="index, follow">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="language" content="English">
+
+        <!-- CSS Frameworks -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+        />
+
+        <title>{frontmatter.title}</title>
+    </head>
+    <body>
+        <BasicNavbar />
+
+        <main class="container">
+            <slot />
+        </main>
+
+        <style>
+        body {
+            padding: 16px;
+            margin: 0;
+        }
+        </style>
+    </body>
+</html>
